@@ -29,3 +29,13 @@ CREATE TABLE inscricoes(
 INSERT INTO alunos(id, nome, turma) VALUES(DEFAULT, "Nicollas", "2°B");
 INSERT INTO oficinas(id, nome, categoria, vagas) VALUES(DEFAULT, "Clube de Xadrez", "Xadrez", 4);
 INSERT INTO inscricoes(id, data_inscricao, id_aluno, id_oficina) VALUES(DEFAULT, "2025-12-12", 1, 1);
+
+SELECT categoria, count(inscricoes.id) as total_inscricoes from oficinas
+INNER JOIN inscricoes 
+ON oficinas.id = inscricoes.id_oficina
+GROUP BY categoria;
+
+SELECT nome as oficina, count(inscricoes.id) as total_inscricoes from oficinas 
+INNER JOIN inscricoes 
+ON oficinas.id = inscricoes.id_oficina 
+GROUP BY nome;
